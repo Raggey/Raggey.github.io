@@ -3,8 +3,6 @@
 
     //Fetch the TLE from Space-track  
     fetchTLEFromServer(noradID, username, password); //See tleToCoordinates.js
-    //TODO: promise on the TLEFromServer
-    // .then(everything else)
 
     //Should be a set timeout that updates the localStorage every 3 seconds 
     setTimeout(function(){
