@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        $("button").click(function(){
+            // $.ajax({
+            //     url: "http://localhost:3000/lights", 
+            //     type: "get",
+            //     success: function(result){
+            //         // $("#div1").html(result);
+            //         console.log(result);
+            // }});
+            var url = 'http://localhost:3000/lights';
+            var xhr = createCORSRequest('GET', url);
+            xhr.send();
+        });
+    });
+    </script>
+    </head>
+    <body>
+
+    <div id="div1"><h2>Hello World</h2></div>
+
+    <button>Toggle Lights</button>
+
+    </body>
+</html>
+
+
+<script>
+
+
+
+// Create the XHR object.
+function createCORSRequest(method, url) {
+  var xhr = new XMLHttpRequest();
+  if ("withCredentials" in xhr) {
+    // XHR for Chrome/Firefox/Opera/Safari.
+    xhr.open(method, url, true);
+  } else if (typeof XDomainRequest != "undefined") {
+    // XDomainRequest for IE.
+    xhr = new XDomainRequest();
+    xhr.open(method, url);
+  } else {
+    // CORS not supported.
+    xhr = null;
+  }
+  return xhr;
+}
+
+// Helper method to parse the title tag from the response.
+function getTitle(text) {
+  return text.match('<title>(.*)?</title>')[1];
+}
+
+// Make the actual CORS request.
+function makeCorsRequest() {
+  // This is a sample server that supports CORS.
+//   var url = 'http://html5rocks-cors.s3-website-us-east-1.amazonaws.com/index.html';
+  var url = 'http://localhost:3000/lights';
+
+  var xhr = createCORSRequest('GET', url);
+  if (!xhr) {
+    alert('CORS not supported');
+    return;
+  }
+
+  // Response handlers.
+  xhr.onload = function() {
+    var text = xhr.responseText;
+    var title = getTitle(text);
+    alert('Response from CORS request to ' + url + ': ' + title);
+  };
+
+  xhr.onerror = function() {
+    alert('Woops, there was an error making the request.');
+  };
+
+  xhr.send();
+}
+
+
+</script>
