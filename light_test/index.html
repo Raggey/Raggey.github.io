@@ -17,6 +17,22 @@
             xhr.send();
         });
     });
+
+    function turnOnButton(string){
+      var url = 'http://192.168.0.170:4999/'+ string;
+      var url = 'http://localhost:3000/lights' + string;
+      var xhr = createCORSRequest('GET', url);
+      xhr.send();
+
+    }
+
+    function witty(colour){
+      var url = 'http://192.168.0.202/'+ colour;
+      var xhr = createCORSRequest('GET', url);
+      xhr.send();
+
+    }
+
     </script>
     </head>
     <body>
@@ -24,6 +40,85 @@
     <div id="div1"><h2>Hello World</h2></div>
 
     <button>Toggle Lights</button>
+
+<br>
+<br>
+<br>
+<br>
+
+    <table>
+
+      <tr>
+        <td> 
+          <input type="button" value='Ch 0 on' onclick="turnOnButton('&hC0,&h00,&h00,&h20,&h20,&hC0');">
+        </td> 
+
+        <td>
+          <input type="button" value='Ch 0 off' onclick="turnOnButton('&hC0,&h00,&h00,&h21,&h21,&hC0');">
+        </td> 
+
+        <td> 
+          <input type="button" value='Ch 1 on' onclick="turnOnButton('&hC0,&h00,&h01,&h20,&h21,&hC0');">
+        </td> 
+
+        <td> 
+          <input type="button" value='Ch 1 off' onclick="turnOnButton('&hC0,&h00,&h01,&h21,&h20,&hC0');">
+        </td> 
+
+      </tr>
+
+      <tr>
+         <td> 
+          <input type="button" value='Ch Red on' onclick="turnOnButton('&hC0,&h00,&h00,&h2C,&hFF,&h00,&h00,&hD3,&hC0');">
+         </td> 
+
+         <td>
+          <input type="button" value='Ch Green on' onclick="turnOnButton('&hC0,&h00,&h00,&h2C,&h00,&hFF,&h00,&hD3,&hC0');">
+        </td> 
+ 
+         <td> 
+          <input type="button" value='Ch Blue on' onclick="turnOnButton('&hC0,&h00,&h00,&h2C,&h00,&h00,&hFF,&hD3,&hC0');">
+         </td> 
+ 
+         <td> </td> 
+      </tr>
+
+      <tr>
+        <!-- All off -->
+        <td>
+          <input type="button" value='All on' onclick="turnOnButton('&hC0,&hFF,&hFF,&h20,&h20,&hC0');">
+        </td> 
+
+        <td> </td> 
+
+        <td> </td> 
+
+        <!-- All on -->
+        <td> 
+          <input type="button" value='All Off' onclick="turnOnButton('&hC0,&hFF,&hFF,&h21,&h21,&hC0');">
+        </td> 
+     </tr>
+
+
+     <tr>
+
+      <td> 
+        <input type="button" value='Green' onclick="witty('green');">
+      </td> 
+
+      <td> 
+        <input type="button" value='Blue' onclick="witty('blue');">
+      </td> 
+
+      <td> 
+        <input type="button" value='Red' onclick="witty('red');">
+      </td> 
+
+     </tr>
+
+
+    </table>
+
 
     </body>
 </html>
