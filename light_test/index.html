@@ -19,15 +19,15 @@
     });
 
     function turnOnButton(string){
-      var url = 'http://192.168.0.170:4999/'+ string;
-      var url = 'http://localhost:3000/lights' + string;
+      var url = 'https://192.168.0.170:4999/'+ string;
+      var url = 'https://localhost:3000/lights' + string;
       var xhr = createCORSRequest('GET', url);
       xhr.send();
 
     }
 
     function witty(colour){
-      var url = 'http://192.168.0.202/'+ colour;
+      var url = 'https://192.168.0.202/'+ colour;
       var xhr = createCORSRequest('GET', url);
       xhr.send();
 
