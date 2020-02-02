@@ -27,7 +27,9 @@
     }
 
     function witty(colour){
-      var url = 'http://192.168.0.202/'+ colour;
+      var url = 'http://192.168.0.202:8080/'+ colour;
+      var url = 'http://49.176.24.215:8080/'+ colour;
+
       var xhr = createCORSRequest('GET', url);
       xhr.send();
 
